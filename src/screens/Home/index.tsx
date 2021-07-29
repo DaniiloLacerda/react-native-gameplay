@@ -14,6 +14,7 @@ import { useNavigation } from "@react-navigation/native";
 
 export function Home() {
   const [category, setCategory] = useState("");
+
   const navigation = useNavigation();
 
   const appointments = [
@@ -22,8 +23,8 @@ export function Home() {
       guild: {
         id: "1",
         name: "Lendários",
-        owner: true,
         icon: null,
+        owner: true,
       },
       category: "1",
       date: "22/06 às 20:40h",
@@ -35,8 +36,8 @@ export function Home() {
       guild: {
         id: "1",
         name: "Lendários",
-        owner: true,
         icon: null,
+        owner: true,
       },
       category: "1",
       date: "22/06 às 20:40h",
@@ -61,8 +62,7 @@ export function Home() {
     <Background>
       <View style={styles.header}>
         <Profile />
-        <ButtonAdd 
-        onPress={handleAppointmentCreate}/>
+        <ButtonAdd onPress={handleAppointmentCreate} />
       </View>
 
       <CategorySelect
@@ -70,21 +70,19 @@ export function Home() {
         setCategory={handleCategorySelect}
       />
 
-      <View style={styles.content}>
-        <ListHeader title={"Partidas Agendadas"} subtitle={"Total 6"} />
-        <FlatList
-          data={appointments}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <Appointment 
-            data={item}
-            onPress={handleAppointmentDetails} />
-          )}
-          ItemSeparatorComponent={() => <ListDivider />}
-          style={styles.matches}
-          showsVerticalScrollIndicator={false}
-        />
-      </View>
+      <ListHeader title="Partidas agendadas" subtitle="Total 6" />
+
+      <FlatList
+        data={appointments}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <Appointment data={item} onPress={handleAppointmentDetails} />
+        )}
+        contentContainerStyle={{ paddingBottom: 69 }}
+        ItemSeparatorComponent={() => <ListDivider />}
+        style={styles.matches}
+        showsVerticalScrollIndicator={false}
+      />
     </Background>
   );
 }

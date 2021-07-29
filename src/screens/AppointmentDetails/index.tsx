@@ -31,7 +31,6 @@ const members =[
   }
 ]
 
-
   return (
     <Background>
       <Header
